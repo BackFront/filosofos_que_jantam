@@ -1,1 +1,9 @@
 C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\bin\Debug\FilosofosQueJantam.exe.config
+C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\bin\Debug\FilosofosQueJantam.exe
+C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\bin\Debug\FilosofosQueJantam.pdb
+C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.FilosofoUC.resources
+C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.Form1.resources
+C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.Properties.Resources.resources
+C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.csproj.GenerateResource.Cache
+C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.exe
+C:\Users\aluno.BANDNET\Desktop\filosofosqjantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.pdb

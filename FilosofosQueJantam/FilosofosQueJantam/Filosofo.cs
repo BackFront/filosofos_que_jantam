@@ -14,19 +14,43 @@ namespace FilosofosQueJantam
 		 * 1 = como fome
 		 * 2 = comendo
 		 */
+		private string nomeFilosofo;
 		private int estado = 0;
 
 		private Token[] tokens = new Token[2];
 		private Fork[] forks = new Fork[2];
 		private Filosofo[] filosofos = new Filosofo[2];
 
+		public Filosofo(string nomeFilosofo, Panel painel)
+		{
+			this.nomeFilosofo = nomeFilosofo;
+			FilosofoUC objFilosofo = new FilosofoUC();
+			objFilosofo.filosofoNome = nomeFilosofo;
 
+			painel.Controls.Add(objFilosofo);
+		}
+
+		public void setFilosofoDir(Filosofo filosofo)
+		{
+			this.filosofos[Lado.Dir] = filosofo;
+		}
+
+		public void setFilosofoEsq(Filosofo filosofo)
+		{
+			this.filosofos[Lado.Esq] = filosofo;
+		}
+
+		//===================================================
 
 		public void comer()
 		{
 			this.pedeGarfoDireito();
 			this.pedeGarfoEsquerdo();
 			MessageBox.Show("Estou Comendo");
+		}
+
+		public void pararComer()
+		{
 		}
 
 		private void pedeGarfoDireito()

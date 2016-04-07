@@ -16,5 +16,17 @@ namespace FilosofosQueJantam
 		{
 			InitializeComponent();
 		}
+
+		public string filosofoNome
+		{
+			get
+			{
+				return nomeFilosofo.Text;
+			}
+			set
+			{
+				nomeFilosofo.Text = value;
+			}
+		}
 	}
 }

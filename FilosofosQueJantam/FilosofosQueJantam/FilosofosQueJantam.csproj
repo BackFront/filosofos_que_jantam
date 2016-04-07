@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filosofo.cs" />
+    <Compile Include="FilosofoUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FilosofoUC.Designer.cs">
+      <DependentUpon>FilosofoUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fork.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -58,6 +64,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Token.cs" />
+    <EmbeddedResource Include="FilosofoUC.resx">
+      <DependentUpon>FilosofoUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
