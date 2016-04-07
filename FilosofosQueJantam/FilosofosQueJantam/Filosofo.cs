@@ -16,8 +16,6 @@ namespace FilosofosQueJantam
 		 */
 		private int estado = 0;
 
-
-		private int[] mao = new int[2];
 		private Token[] tokens = new Token[2];
 		private Fork[] forks = new Fork[2];
 		private Filosofo[] filosofos = new Filosofo[2];
@@ -33,34 +31,38 @@ namespace FilosofosQueJantam
 
 		private void pedeGarfoDireito()
 		{
-			if (this.mao[maoDir] == this.token)
+			if (this.tokens[Lado.Dir] != null)
 			{
-				this.pedirGarfos(filosofoDir);
+				this.pedirGarfo(filosofos[Lado.Dir], Lado.Dir);
 			}
 		}
 
 		private void pedeGarfoEsquerdo()
 		{
-			if (this.mao[maoEsq] == this.token)
+			if (this.tokens[Lado.Esq] != null)
 			{
-				this.pedirGarfos(filosofoEsq);
+				this.pedirGarfo(filosofos[Lado.Esq], Lado.Esq);
 			}
 		}
 
-		private void pedirGarfos(Filosofo ladoFilosofo)
+		private void pedirGarfo(Filosofo filosofo, int lado)
 		{
-			MessageBox.Show("Dá o garfo");
-			this.enviaToken(filosofoDir);
+			MessageBox.Show("Dá o garfo fafavo");
+			this.enviaToken(filosofo, lado);
+			this.forks[lado] = new Fork();
 		}
 
 		//=====================================================
-		private void enviaToken(Filosofo ladoFilosofo)
+		private void enviaToken(Filosofo ladoFilosofo, int lado)
 		{
-			//Envia o token para o filosofoX | X = lado
+			ladoFilosofo.recebeToken(lado);
+			this.tokens[lado] = null;
 		}
 
 		private void recebeToken(int lado)
 		{
+			this.tokens[lado] = new Token();
+			this.forks[lado] = null;
 		}
 	}
 }
