@@ -35,9 +35,14 @@ namespace FilosofosQueJantam
             filosofo3.setFilosofoLado(filosofo1, Lado.Esq);
 
             //Inclui os filosofos no painel
-            this.PainelProg.Controls.Add(filosofo1.Usercontroll);
-            this.PainelProg.Controls.Add(filosofo2.Usercontroll);
-            this.PainelProg.Controls.Add(filosofo3.Usercontroll);
+            this.flowLayoutPanel1.Controls.Add(filosofo1.Usercontroll);
+            this.flowLayoutPanel1.Controls.Add(filosofo2.Usercontroll);
+            this.flowLayoutPanel1.Controls.Add(filosofo3.Usercontroll);
+            
+
+            filosofo1.build();
+            filosofo2.build();
+            filosofo3.build();
         }
 
     }

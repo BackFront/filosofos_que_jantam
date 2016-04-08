@@ -10,24 +10,24 @@ using System.Windows.Forms;
 
 namespace FilosofosQueJantam
 {
-	public partial class FilosofoUC : UserControl
-	{
-		public FilosofoUC()
-		{
-			InitializeComponent();
-		}
+    public partial class FilosofoUC : UserControl
+    {
+        public FilosofoUC()
+        {
+            InitializeComponent();
+        }
 
-		public string filosofoNome
-		{
-			get
-			{
-				return nomeFilosofo.Text;
-			}
-			set
-			{
-				nomeFilosofo.Text = value;
-			}
-		}
+        public string filosofoNome
+        {
+            get
+            {
+                return nomeFilosofo.Text;
+            }
+            set
+            {
+                nomeFilosofo.Text = value;
+            }
+        }
 
         public string filosofoEstado
         {
@@ -69,7 +69,7 @@ namespace FilosofosQueJantam
         {
             set
             {
-                filosofoDir.Text = value;
+                filosofoDir.Text = "<-[ " + value + " ]";
             }
         }
 
@@ -77,7 +77,7 @@ namespace FilosofosQueJantam
         {
             set
             {
-                filosofoEsq.Text = value;
+                filosofoEsq.Text = "[ " + value + " ]->";
             }
         }
     }

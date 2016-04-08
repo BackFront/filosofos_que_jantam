@@ -14,7 +14,7 @@ namespace FilosofosQueJantam
 		 * 1 = como fome
 		 * 2 = comendo
 		 */
-        private string nomeFilosofo;
+        public string nomeFilosofo;
 
         private int estado = 0;
         private string currentEstado;
@@ -55,8 +55,15 @@ namespace FilosofosQueJantam
 
             this.myUserControll.filosofoNome = nomeFilosofo;
             this.myUserControll.filosofoEstado = this.currentEstado;
+
             this.myUserControll.filosofoMaoDir = this.hands[Lado.Dir];
             this.myUserControll.filosofoMaoEsq = this.hands[Lado.Esq];
+        }
+
+        public void build()
+        {
+            this.myUserControll.filosofoDaDir = this.filosofos[Lado.Dir].nomeFilosofo;
+            this.myUserControll.filosofoDaEsq = this.filosofos[Lado.Esq].nomeFilosofo;
         }
 
         //===================================================
@@ -74,10 +81,11 @@ namespace FilosofosQueJantam
         //Faz o Filosofo pegar um objeto com uma das mãos
         private void pegar(object objeto, int mao)
         {
-            if(objeto.GetType() == typeof(Token))
+            if (objeto.GetType() == typeof(Token))
             {
-                this.tokens[mao] = (Token) objeto;
-            } else if (objeto.GetType() == typeof(Fork))
+                this.tokens[mao] = (Token)objeto;
+            }
+            else if (objeto.GetType() == typeof(Fork))
             {
                 this.forks[mao] = (Fork)objeto;
             }
@@ -95,7 +103,7 @@ namespace FilosofosQueJantam
             {
                 this.hands[Lado.Dir] = "Token";
             }
-            else if(this.tokens[Lado.Esq] != null && this.tokens[Lado.Esq].GetType() == typeof(Token))
+            else if (this.tokens[Lado.Esq] != null && this.tokens[Lado.Esq].GetType() == typeof(Token))
             {
                 this.hands[Lado.Esq] = "Token";
             }

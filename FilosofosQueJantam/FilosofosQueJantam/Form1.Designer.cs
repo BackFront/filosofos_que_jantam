@@ -28,15 +28,19 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.PainelProg = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // PainelProg
+            // flowLayoutPanel1
             // 
-            this.PainelProg.Location = new System.Drawing.Point(12, 12);
-            this.PainelProg.Name = "PainelProg";
-            this.PainelProg.Size = new System.Drawing.Size(906, 490);
-            this.PainelProg.TabIndex = 0;
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(906, 490);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -44,7 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(930, 514);
-            this.Controls.Add(this.PainelProg);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -52,8 +56,7 @@
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Panel PainelProg;
-	}
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+    }
 }
 
