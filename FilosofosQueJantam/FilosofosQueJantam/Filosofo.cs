@@ -29,11 +29,16 @@ namespace FilosofosQueJantam
         //End atributes
 
         //CONTRUCTOR
-        public Filosofo(string nomeFilosofo)
+        public Filosofo(string nomeFilosofo, object maoDir, object maoEsq)
         {
+            //Pega os objetos
+            this.pegar(maoDir, Lado.Dir);
+            this.pegar(maoEsq, Lado.Esq);
+            setObjMaos();
+
             this.nomeFilosofo = nomeFilosofo;
             this.myUserControll = new FilosofoUC();
-            this.myUserControll.filosofoNome = nomeFilosofo;
+
             switch (this.estado)
             {
                 case 0:
@@ -47,15 +52,11 @@ namespace FilosofosQueJantam
                     break;
             }
 
-            this.myUserControll.filosofoEstado = this.currentEstado;
-            setObjMaos();
-            this.myUserControll.filosofoMaoDir = this.verMao(Lado.Dir);
-            this.myUserControll.filosofoMaoDir = this.verMao(Lado.Esq);
-        }
 
-        private string verMao(int lado)
-        {
-            return this.hands[lado];
+            this.myUserControll.filosofoNome = nomeFilosofo;
+            this.myUserControll.filosofoEstado = this.currentEstado;
+            this.myUserControll.filosofoMaoDir = this.hands[Lado.Dir];
+            this.myUserControll.filosofoMaoEsq = this.hands[Lado.Esq];
         }
 
         //===================================================
@@ -71,7 +72,7 @@ namespace FilosofosQueJantam
         }
 
         //Faz o Filosofo pegar um objeto com uma das mãos
-        public void pegar(object objeto, int mao)
+        private void pegar(object objeto, int mao)
         {
             if(objeto.GetType() == typeof(Token))
             {
@@ -90,18 +91,24 @@ namespace FilosofosQueJantam
         private void setObjMaos()
         {
             //Ve se tem token
-            if (this.tokens[Lado.Dir] != null)
+            if (this.tokens[Lado.Dir] != null && this.tokens[Lado.Dir].GetType() == typeof(Token))
             {
                 this.hands[Lado.Dir] = "Token";
             }
-            else { this.hands[Lado.Dir] = "Garfo"; }
+            else if(this.tokens[Lado.Esq] != null && this.tokens[Lado.Esq].GetType() == typeof(Token))
+            {
+                this.hands[Lado.Esq] = "Token";
+            }
 
             //Ve se tem garfo
-            if (this.forks[Lado.Dir] != null)
+            if (this.forks[Lado.Dir] != null && this.forks[Lado.Dir].GetType() == typeof(Fork))
             {
                 this.hands[Lado.Dir] = "Garfo";
             }
-            else { this.hands[Lado.Dir] = "Token"; }
+            else if (this.forks[Lado.Esq] != null && this.forks[Lado.Esq].GetType() == typeof(Fork))
+            {
+                this.hands[Lado.Esq] = "Garfo";
+            }
         }
 
         //===================================================

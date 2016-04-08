@@ -64,5 +64,21 @@ namespace FilosofosQueJantam
                 estadoMaoEsq.Text = value;
             }
         }
+
+        public string filosofoDaDir
+        {
+            set
+            {
+                filosofoDir.Text = value;
+            }
+        }
+
+        public string filosofoDaEsq
+        {
+            set
+            {
+                filosofoEsq.Text = value;
+            }
+        }
     }
 }

@@ -36,6 +36,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.estadoMaoDir = new System.Windows.Forms.Label();
             this.estadoMaoEsq = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.filosofoEsq = new System.Windows.Forms.Label();
+            this.filosofoDir = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // acaoFilosofo
@@ -125,11 +129,51 @@
             this.estadoMaoEsq.Text = "...";
             this.estadoMaoEsq.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "<-[";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(141, 147);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(19, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "]->";
+            // 
+            // filosofoEsq
+            // 
+            this.filosofoEsq.AutoSize = true;
+            this.filosofoEsq.Location = new System.Drawing.Point(128, 148);
+            this.filosofoEsq.Name = "filosofoEsq";
+            this.filosofoEsq.Size = new System.Drawing.Size(16, 13);
+            this.filosofoEsq.TabIndex = 10;
+            this.filosofoEsq.Text = "...";
+            // 
+            // filosofoDir
+            // 
+            this.filosofoDir.AutoSize = true;
+            this.filosofoDir.Location = new System.Drawing.Point(21, 146);
+            this.filosofoDir.Name = "filosofoDir";
+            this.filosofoDir.Size = new System.Drawing.Size(16, 13);
+            this.filosofoDir.TabIndex = 11;
+            this.filosofoDir.Text = "...";
+            // 
             // FilosofoUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
+            this.Controls.Add(this.filosofoDir);
+            this.Controls.Add(this.filosofoEsq);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.estadoMaoEsq);
             this.Controls.Add(this.estadoMaoDir);
             this.Controls.Add(this.label3);
@@ -139,7 +183,7 @@
             this.Controls.Add(this.nomeFilosofo);
             this.Controls.Add(this.acaoFilosofo);
             this.Name = "FilosofoUC";
-            this.Size = new System.Drawing.Size(166, 158);
+            this.Size = new System.Drawing.Size(166, 167);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +199,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label estadoMaoDir;
         private System.Windows.Forms.Label estadoMaoEsq;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label filosofoEsq;
+        private System.Windows.Forms.Label filosofoDir;
     }
 }
