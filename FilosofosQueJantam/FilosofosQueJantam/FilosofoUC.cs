@@ -28,5 +28,41 @@ namespace FilosofosQueJantam
 				nomeFilosofo.Text = value;
 			}
 		}
-	}
+
+        public string filosofoEstado
+        {
+            get
+            {
+                return estadoFilosofo.Text;
+            }
+            set
+            {
+                estadoFilosofo.Text = value;
+            }
+        }
+
+        public string filosofoMaoDir
+        {
+            get
+            {
+                return estadoMaoDir.Text;
+            }
+            set
+            {
+                estadoMaoDir.Text = value;
+            }
+        }
+
+        public string filosofoMaoEsq
+        {
+            get
+            {
+                return estadoMaoEsq.Text;
+            }
+            set
+            {
+                estadoMaoEsq.Text = value;
+            }
+        }
+    }
 }
