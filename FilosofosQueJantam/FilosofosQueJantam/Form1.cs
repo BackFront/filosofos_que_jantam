@@ -21,18 +21,18 @@ namespace FilosofosQueJantam
 
 
             //Filosofo 01
-			filosofo1.setFilosofoDir(filosofo3);
-			filosofo1.setFilosofoEsq(filosofo2);
+			filosofo1.setFilosofoLado(filosofo3, Lado.Dir);
+			filosofo1.setFilosofoLado(filosofo2, Lado.Esq);
 
 
             //Filosofo 02
-            filosofo2.setFilosofoDir(filosofo1);
-			filosofo2.setFilosofoEsq(filosofo3);
+            filosofo2.setFilosofoLado(filosofo1, Lado.Dir);
+			filosofo2.setFilosofoLado(filosofo3, Lado.Esq);
 
 
             //Filosofo 03
-            filosofo3.setFilosofoDir(filosofo2);
-			filosofo3.setFilosofoEsq(filosofo1);
+            filosofo3.setFilosofoLado(filosofo2, Lado.Dir);
+			filosofo3.setFilosofoLado(filosofo1, Lado.Esq);
 
 
             //Inclui os filosofos no painel

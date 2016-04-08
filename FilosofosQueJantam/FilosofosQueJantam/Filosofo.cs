@@ -20,13 +20,15 @@ namespace FilosofosQueJantam
         private string currentEstado;
 
         private string[] maos;
-        
+
         private FilosofoUC myUserControll;
 
         private Token[] tokens = new Token[2];
         private Fork[] forks = new Fork[2];
         private Filosofo[] filosofos = new Filosofo[2];
+        //End atributes
 
+        //CONTRUCTOR
         public Filosofo(string nomeFilosofo)
         {
             this.nomeFilosofo = nomeFilosofo;
@@ -50,36 +52,31 @@ namespace FilosofosQueJantam
             this.myUserControll.filosofoMaoDir = this.maos[Lado.Esq];
         }
 
+        //===================================================
+        // METODOS DOS FILOSOFOS
+
+        //Retorna o Usercontroll deste usuário
         public FilosofoUC Usercontroll
         {
             get
             {
                 return this.myUserControll;
             }
-            set
-            {
-                this.myUserControll = value;
-            }
         }
 
-
-        public void setFilosofoDir(Filosofo filosofo)
+        public void setFilosofoLado(Filosofo filosofo, int lado)
         {
-            this.filosofos[Lado.Dir] = filosofo;
-        }
-
-        public void setFilosofoEsq(Filosofo filosofo)
-        {
-            this.filosofos[Lado.Esq] = filosofo;
+            this.filosofos[lado] = filosofo;
         }
 
         private void setObjMaos()
         {
             //Ve se tem token
-            if(this.tokens[Lado.Dir] != null)
+            if (this.tokens[Lado.Dir] != null)
             {
                 this.maos[Lado.Dir] = "Token";
-            } else { this.maos[Lado.Dir] = "Garfo"; }
+            }
+            else { this.maos[Lado.Dir] = "Garfo"; }
 
             //Ve se tem garfo
             if (this.forks[Lado.Dir] != null)
@@ -90,12 +87,12 @@ namespace FilosofosQueJantam
         }
 
         //===================================================
-        // AÇÕES
+        // METODOS DE AÇÕES
 
         public void comer()
         {
-            this.pedeGarfoDireito();
-            this.pedeGarfoEsquerdo();
+            this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
+            this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
             MessageBox.Show("Estou Comendo");
         }
 
@@ -104,31 +101,22 @@ namespace FilosofosQueJantam
         }
 
         //===================================================
-
-        private void pedeGarfoDireito()
-        {
-            if (this.tokens[Lado.Dir] != null)
-            {
-                this.pedirGarfo(filosofos[Lado.Dir], Lado.Dir);
-            }
-        }
-
-        private void pedeGarfoEsquerdo()
-        {
-            if (this.tokens[Lado.Esq] != null)
-            {
-                this.pedirGarfo(filosofos[Lado.Esq], Lado.Esq);
-            }
-        }
+        // METODOS GARFO
 
         private void pedirGarfo(Filosofo filosofo, int lado)
         {
-            MessageBox.Show("Dá o garfo fafavo");
-            this.enviaToken(filosofo, lado);
-            this.forks[lado] = new Fork();
+            if (this.tokens[lado] != null)
+            {
+                MessageBox.Show("Dá o garfo fafavo");
+                this.enviaToken(filosofo, lado);
+                this.forks[lado] = new Fork();
+                this.tokens[lado] = null;
+            }
+            else { MessageBox.Show(this.nomeFilosofo + ": Você não tem token ou já está com o garfo"); }
         }
 
         //=====================================================
+        // METODOS TOKEN
         private void enviaToken(Filosofo ladoFilosofo, int lado)
         {
             ladoFilosofo.recebeToken(lado);
