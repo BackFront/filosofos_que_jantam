@@ -98,12 +98,12 @@ namespace FilosofosQueJantam
 
         private void setObjMaos()
         {
-            //Ve se tem token
             if (this.tokens[Lado.Dir] != null && this.tokens[Lado.Dir].GetType() == typeof(Token))
             {
                 this.hands[Lado.Dir] = "Token";
             }
-            else if (this.tokens[Lado.Esq] != null && this.tokens[Lado.Esq].GetType() == typeof(Token))
+
+            if (this.tokens[Lado.Esq] != null && this.tokens[Lado.Esq].GetType() == typeof(Token))
             {
                 this.hands[Lado.Esq] = "Token";
             }
@@ -113,7 +113,8 @@ namespace FilosofosQueJantam
             {
                 this.hands[Lado.Dir] = "Garfo";
             }
-            else if (this.forks[Lado.Esq] != null && this.forks[Lado.Esq].GetType() == typeof(Fork))
+
+            if (this.forks[Lado.Esq] != null && this.forks[Lado.Esq].GetType() == typeof(Fork))
             {
                 this.hands[Lado.Esq] = "Garfo";
             }
