@@ -138,7 +138,7 @@ namespace FilosofosQueJantam
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
 
-            this.mudarEstadoComendo();
+            this.mudarEstadoMeditando();
         }
 
         //===================================================
@@ -148,8 +148,8 @@ namespace FilosofosQueJantam
             this.estado = 0; //Meditando
             MessageBox.Show(this.nomeFilosofo + " está meditando!");
             this.myUserControll.filosofoEstado = "meditando";
-            this.myUserControll.BotaoClicado -= comer;
-            this.myUserControll.BotaoClicado += pararComer;
+            this.myUserControll.BotaoClicado += comer;
+            this.myUserControll.BotaoClicado -= pararComer;
         }
 
         private void mudarEstadoComFome()
