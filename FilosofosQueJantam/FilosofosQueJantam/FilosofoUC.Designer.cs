@@ -48,6 +48,7 @@
             this.acaoFilosofo.TabIndex = 0;
             this.acaoFilosofo.Text = "Exec";
             this.acaoFilosofo.UseVisualStyleBackColor = true;
+            this.acaoFilosofo.Click += new System.EventHandler(this.acaoFilosofo_Click);
             // 
             // nomeFilosofo
             // 

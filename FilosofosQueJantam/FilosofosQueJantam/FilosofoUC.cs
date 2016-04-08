@@ -12,6 +12,8 @@ namespace FilosofosQueJantam
 {
     public partial class FilosofoUC : UserControl
     {
+        public event EventHandler BotaoClicado;
+
         public FilosofoUC()
         {
             InitializeComponent();
@@ -79,6 +81,12 @@ namespace FilosofosQueJantam
             {
                 filosofoEsq.Text = "[ " + value + " ]->";
             }
+        }
+
+        private void acaoFilosofo_Click(object sender, EventArgs e)
+        {
+            if (BotaoClicado != null)
+                BotaoClicado(this, e);
         }
     }
 }

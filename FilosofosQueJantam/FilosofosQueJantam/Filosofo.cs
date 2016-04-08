@@ -55,6 +55,7 @@ namespace FilosofosQueJantam
 
             this.myUserControll.filosofoNome = nomeFilosofo;
             this.myUserControll.filosofoEstado = this.currentEstado;
+            this.myUserControll.BotaoClicado += comer;
 
             this.myUserControll.filosofoMaoDir = this.hands[Lado.Dir];
             this.myUserControll.filosofoMaoEsq = this.hands[Lado.Esq];
@@ -122,11 +123,14 @@ namespace FilosofosQueJantam
 
         //===================================================
         // METODOS DE AÇÕES
-        public void comer()
+        public void comer(object sender, EventArgs e)
         {
+            FilosofoUC myUserControll = (FilosofoUC)sender;
+
             this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
             this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
-            MessageBox.Show("Estou Comendo");
+            MessageBox.Show(this.nomeFilosofo + " está comendo agora!");
+            this.myUserControll.filosofoEstado = "Comendo";
         }
 
         public void pararComer()
@@ -141,10 +145,10 @@ namespace FilosofosQueJantam
             {
                 MessageBox.Show("Dá o garfo fafavo");
                 this.enviaToken(filosofo, lado);
+
                 this.forks[lado] = new Fork();
                 this.tokens[lado] = null;
             }
-            else { MessageBox.Show(this.nomeFilosofo + ": Você não tem token ou já está com o garfo"); }
         }
 
         //=====================================================
