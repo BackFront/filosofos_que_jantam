@@ -19,7 +19,7 @@ namespace FilosofosQueJantam
         private int estado = 0;
         private string currentEstado;
 
-        private string[] hands;
+        private string[] hands = new string[2];
 
         private FilosofoUC myUserControll;
 
@@ -48,8 +48,14 @@ namespace FilosofosQueJantam
             }
 
             this.myUserControll.filosofoEstado = this.currentEstado;
-            this.myUserControll.filosofoMaoDir = this.hands[Lado.Dir];
-            this.myUserControll.filosofoMaoDir = this.hands[Lado.Esq];
+            setObjMaos();
+            this.myUserControll.filosofoMaoDir = this.verMao(Lado.Dir);
+            this.myUserControll.filosofoMaoDir = this.verMao(Lado.Esq);
+        }
+
+        private string verMao(int lado)
+        {
+            return this.hands[lado];
         }
 
         //===================================================
