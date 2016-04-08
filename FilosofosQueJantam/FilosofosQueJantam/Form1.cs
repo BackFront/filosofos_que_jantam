@@ -10,30 +10,37 @@ using System.Windows.Forms;
 
 namespace FilosofosQueJantam
 {
-	public partial class Form1 : Form
-	{
-		public Form1()
-		{
-			InitializeComponent();
-			Filosofo filosofo1 = new Filosofo("Rafael");
-			Filosofo filosofo2 = new Filosofo("Andre");
-			Filosofo filosofo3 = new Filosofo("Gabriel");
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            Filosofo filosofo1 = new Filosofo("Rafael");
+            Filosofo filosofo2 = new Filosofo("Andre");
+            Filosofo filosofo3 = new Filosofo("Gabriel");
 
 
             //Filosofo 01
-			filosofo1.setFilosofoLado(filosofo3, Lado.Dir);
-			filosofo1.setFilosofoLado(filosofo2, Lado.Esq);
+            filosofo1.setFilosofoLado(filosofo3, Lado.Dir);
+            filosofo1.setFilosofoLado(filosofo2, Lado.Esq);
+
+            filosofo1.pegar(new Fork(), Lado.Dir);
+            filosofo1.pegar(new Fork(), Lado.Esq);
 
 
             //Filosofo 02
             filosofo2.setFilosofoLado(filosofo1, Lado.Dir);
-			filosofo2.setFilosofoLado(filosofo3, Lado.Esq);
+            filosofo2.setFilosofoLado(filosofo3, Lado.Esq);
 
+            filosofo2.pegar(new Token(), Lado.Dir);
+            filosofo2.pegar(new Token(), Lado.Esq);
 
             //Filosofo 03
             filosofo3.setFilosofoLado(filosofo2, Lado.Dir);
-			filosofo3.setFilosofoLado(filosofo1, Lado.Esq);
+            filosofo3.setFilosofoLado(filosofo1, Lado.Esq);
 
+            filosofo2.pegar(new Fork(), Lado.Dir);
+            filosofo2.pegar(new Token(), Lado.Esq);
 
             //Inclui os filosofos no painel
             this.PainelProg.Controls.Add(filosofo1.Usercontroll);
@@ -41,5 +48,5 @@ namespace FilosofosQueJantam
             this.PainelProg.Controls.Add(filosofo3.Usercontroll);
         }
 
-	}
+    }
 }

@@ -19,7 +19,7 @@ namespace FilosofosQueJantam
         private int estado = 0;
         private string currentEstado;
 
-        private string[] maos;
+        private string[] hands;
 
         private FilosofoUC myUserControll;
 
@@ -48,8 +48,8 @@ namespace FilosofosQueJantam
             }
 
             this.myUserControll.filosofoEstado = this.currentEstado;
-            this.myUserControll.filosofoMaoDir = this.maos[Lado.Dir];
-            this.myUserControll.filosofoMaoDir = this.maos[Lado.Esq];
+            this.myUserControll.filosofoMaoDir = this.hands[Lado.Dir];
+            this.myUserControll.filosofoMaoDir = this.hands[Lado.Esq];
         }
 
         //===================================================
@@ -64,6 +64,18 @@ namespace FilosofosQueJantam
             }
         }
 
+        //Faz o Filosofo pegar um objeto com uma das mãos
+        public void pegar(object objeto, int mao)
+        {
+            if(objeto.GetType() == typeof(Token))
+            {
+                this.tokens[mao] = (Token) objeto;
+            } else if (objeto.GetType() == typeof(Fork))
+            {
+                this.forks[mao] = (Fork)objeto;
+            }
+        }
+
         public void setFilosofoLado(Filosofo filosofo, int lado)
         {
             this.filosofos[lado] = filosofo;
@@ -74,21 +86,20 @@ namespace FilosofosQueJantam
             //Ve se tem token
             if (this.tokens[Lado.Dir] != null)
             {
-                this.maos[Lado.Dir] = "Token";
+                this.hands[Lado.Dir] = "Token";
             }
-            else { this.maos[Lado.Dir] = "Garfo"; }
+            else { this.hands[Lado.Dir] = "Garfo"; }
 
             //Ve se tem garfo
             if (this.forks[Lado.Dir] != null)
             {
-                this.maos[Lado.Dir] = "Garfo";
+                this.hands[Lado.Dir] = "Garfo";
             }
-            else { this.maos[Lado.Dir] = "Token"; }
+            else { this.hands[Lado.Dir] = "Token"; }
         }
 
         //===================================================
         // METODOS DE AÇÕES
-
         public void comer()
         {
             this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
@@ -102,7 +113,6 @@ namespace FilosofosQueJantam
 
         //===================================================
         // METODOS GARFO
-
         private void pedirGarfo(Filosofo filosofo, int lado)
         {
             if (this.tokens[lado] != null)
