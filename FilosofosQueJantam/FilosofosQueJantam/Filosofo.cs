@@ -148,6 +148,10 @@ namespace FilosofosQueJantam
         }
 
         //===================================================
+        // METODOS DE VERIFICAÇÃO
+
+
+        //===================================================
         // METODOS GARFO
         private void pedirGarfo(Filosofo filosofo, int lado)
         {
