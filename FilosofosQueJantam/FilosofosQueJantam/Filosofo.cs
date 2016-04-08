@@ -127,29 +127,54 @@ namespace FilosofosQueJantam
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
 
-            this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
-            this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
-            MessageBox.Show(this.nomeFilosofo + " está comendo agora!");
-            this.myUserControll.filosofoEstado = "Comendo";
+            //this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
+            //this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
 
-            this.myUserControll.BotaoClicado -= comer;
-            this.myUserControll.BotaoClicado += pararComer;
+            this.mudarEstadoComendo();
         }
 
         public void pararComer(object sender, EventArgs e)
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
 
-            MessageBox.Show(this.nomeFilosofo + " parou de comer");
-            this.myUserControll.filosofoEstado = "Meditando";
+            this.mudarEstadoComendo();
+        }
 
+        //===================================================
+        // METODOS DE MUDANÇA DE ESTADO
+        private void mudarEstadoMeditando()
+        {
+            this.estado = 0; //Meditando
+            MessageBox.Show(this.nomeFilosofo + " está meditando!");
+            this.myUserControll.filosofoEstado = "meditando";
+            this.myUserControll.BotaoClicado -= comer;
+            this.myUserControll.BotaoClicado += pararComer;
+        }
+
+        private void mudarEstadoComFome()
+        {
+            this.estado = 1; //Com Fome
+            MessageBox.Show(this.nomeFilosofo + " está com fome!");
+            this.myUserControll.filosofoEstado = "Com fome";
+            this.myUserControll.BotaoClicado -= comer;
             this.myUserControll.BotaoClicado -= pararComer;
-            this.myUserControll.BotaoClicado += comer;
+
+        }
+
+        private void mudarEstadoComendo()
+        {
+            this.estado = 2; //Comendo
+            MessageBox.Show(this.nomeFilosofo + " está comendo!");
+            this.myUserControll.filosofoEstado = "Comendo";
+            this.myUserControll.BotaoClicado -= comer;
+            this.myUserControll.BotaoClicado += pararComer;
         }
 
         //===================================================
         // METODOS DE VERIFICAÇÃO
-
+        private void estaComGarfo()
+        {
+        }
 
         //===================================================
         // METODOS GARFO
