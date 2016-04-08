@@ -127,8 +127,9 @@ namespace FilosofosQueJantam
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
 
-            //this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
-            //this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
+            //Verifica se esta com os garfos
+            if (!this.estaComGarfo(Lado.Dir)) this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
+            if (!this.estaComGarfo(Lado.Esq)) this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
 
             this.mudarEstadoComendo();
         }
@@ -172,8 +173,10 @@ namespace FilosofosQueJantam
 
         //===================================================
         // METODOS DE VERIFICAÇÃO
-        private void estaComGarfo()
+        private bool estaComGarfo(int lado)
         {
+            if (this.forks[lado] != null) return true;
+            return false;
         }
 
         //===================================================
@@ -182,7 +185,7 @@ namespace FilosofosQueJantam
         {
             if (this.tokens[lado] != null)
             {
-                MessageBox.Show("Dá o garfo fafavo");
+                MessageBox.Show(this.filosofos[lado].nomeFilosofo + ", dá o garfo fafavo");
                 this.enviaToken(filosofo, lado);
 
                 this.forks[lado] = new Fork();
