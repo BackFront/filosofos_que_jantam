@@ -127,9 +127,21 @@ namespace FilosofosQueJantam
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
 
-            //Verifica se esta com os garfos
-            if (!this.estaComGarfo(Lado.Dir)) this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
-            if (!this.estaComGarfo(Lado.Esq)) this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
+            //Verifica se 'this' esta com os garfos
+            if (!this.estouComGarfo(Lado.Dir))
+            {
+                //Verifica se visinho esta comendo
+                if(!estaComendo(Lado.Dir))
+                    this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
+            }
+
+            //Verifica se 'this' esta com os garfos
+            if (!this.estouComGarfo(Lado.Esq))
+            {
+                //Verifica se visinho esta comendo
+                if (!estaComendo(Lado.Esq))
+                    this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
+            }
 
             this.mudarEstadoComendo();
         }
@@ -137,7 +149,6 @@ namespace FilosofosQueJantam
         public void pararComer(object sender, EventArgs e)
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
-
             this.mudarEstadoMeditando();
         }
 
@@ -171,11 +182,20 @@ namespace FilosofosQueJantam
             this.myUserControll.BotaoClicado += pararComer;
         }
 
+        private void garfoSujo()
+        { }
+
         //===================================================
         // METODOS DE VERIFICAÇÃO
-        private bool estaComGarfo(int lado)
+        private bool estouComGarfo(int lado)
         {
             if (this.forks[lado] != null) return true;
+            return false;
+        }
+
+        private bool estaComendo(int lado)
+        {
+            if (this.filosofos[lado].estado == 2) return false;
             return false;
         }
 
