@@ -131,10 +131,20 @@ namespace FilosofosQueJantam
             this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
             MessageBox.Show(this.nomeFilosofo + " está comendo agora!");
             this.myUserControll.filosofoEstado = "Comendo";
+
+            this.myUserControll.BotaoClicado -= comer;
+            this.myUserControll.BotaoClicado += pararComer;
         }
 
-        public void pararComer()
+        public void pararComer(object sender, EventArgs e)
         {
+            FilosofoUC myUserControll = (FilosofoUC)sender;
+
+            MessageBox.Show(this.nomeFilosofo + " parou de comer");
+            this.myUserControll.filosofoEstado = "Meditando";
+
+            this.myUserControll.BotaoClicado -= pararComer;
+            this.myUserControll.BotaoClicado += comer;
         }
 
         //===================================================

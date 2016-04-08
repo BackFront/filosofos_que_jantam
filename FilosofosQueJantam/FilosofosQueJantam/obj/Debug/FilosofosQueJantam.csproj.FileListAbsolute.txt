@@ -16,3 +16,4 @@ C:\Users\douglas.almeida\Documents\Visual Studio 2015\Projects\filosofos_que_jan
 C:\Users\douglas.almeida\Documents\Visual Studio 2015\Projects\filosofos_que_jantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.Form1.resources
 C:\Users\douglas.almeida\Documents\Visual Studio 2015\Projects\filosofos_que_jantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.Properties.Resources.resources
 C:\Users\douglas.almeida\Documents\Visual Studio 2015\Projects\filosofos_que_jantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.csproj.GenerateResource.Cache
+C:\Users\douglas.almeida\Documents\Visual Studio 2015\Projects\filosofos_que_jantam\FilosofosQueJantam\FilosofosQueJantam\obj\Debug\FilosofosQueJantam.csprojResolveAssemblyReference.cache
