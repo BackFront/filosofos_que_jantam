@@ -14,6 +14,8 @@ namespace FilosofosQueJantam
     {
         public event EventHandler BotaoClicado;
 
+        public int[] filosofoMao = new int[2];
+
         public FilosofoUC()
         {
             InitializeComponent();

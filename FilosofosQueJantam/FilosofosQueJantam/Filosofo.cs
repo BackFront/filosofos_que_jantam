@@ -219,12 +219,16 @@ namespace FilosofosQueJantam
         {
             ladoFilosofo.recebeToken(lado);
             this.tokens[lado] = null;
+            if (Lado.Dir == lado) this.myUserControll.filosofoMaoDir = "Garfo";
+            if (Lado.Esq == lado) this.myUserControll.filosofoMaoEsq = "Garfo";
         }
 
         private void recebeToken(int lado)
         {
             this.tokens[lado] = new Token();
             this.forks[lado] = null;
+            if (Lado.Dir == lado) this.myUserControll.filosofoMaoDir = "Token";
+            if (Lado.Esq == lado) this.myUserControll.filosofoMaoEsq = "Token";
         }
     }
 }
