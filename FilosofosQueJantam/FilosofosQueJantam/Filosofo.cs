@@ -127,15 +127,15 @@ namespace FilosofosQueJantam
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
 
-            //Verifica se 'this' esta com os garfos
+            //Verifica se 'this' esta com o garfo
             if (!this.estouComGarfo(Lado.Dir))
             {
                 //Verifica se visinho esta comendo
-                if(!estaComendo(Lado.Dir))
+                if (!estaComendo(Lado.Dir))
                     this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
             }
 
-            //Verifica se 'this' esta com os garfos
+            //Verifica se 'this' esta com o garfo
             if (!this.estouComGarfo(Lado.Esq))
             {
                 //Verifica se visinho esta comendo
@@ -143,7 +143,13 @@ namespace FilosofosQueJantam
                     this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
             }
 
-            this.mudarEstadoComendo();
+            if(this.estouComOsDoisGarfo())
+            {
+                this.mudarEstadoComendo();
+            } else
+            {
+                this.mudarEstadoComFome();
+            }
         }
 
         public void pararComer(object sender, EventArgs e)
@@ -185,6 +191,12 @@ namespace FilosofosQueJantam
         private void garfoSujo()
         { }
 
+        private int inverteLado(int lado)
+        {
+            if (lado == 1) return 0;
+            if (lado == 0) return 1;
+            return lado;
+        }
         //===================================================
         // METODOS DE VERIFICAÇÃO
         private bool estouComGarfo(int lado)
@@ -193,9 +205,15 @@ namespace FilosofosQueJantam
             return false;
         }
 
+        private bool estouComOsDoisGarfo()
+        {
+            if (this.forks[0] != null && this.forks[1] != null) return true;
+            return false;
+        }
+
         private bool estaComendo(int lado)
         {
-            if (this.filosofos[lado].estado == 2) return false;
+            if (this.filosofos[lado].estado == 2) return true;
             return false;
         }
 
@@ -206,10 +224,16 @@ namespace FilosofosQueJantam
             if (this.tokens[lado] != null)
             {
                 MessageBox.Show(this.filosofos[lado].nomeFilosofo + ", dá o garfo fafavo");
-                this.enviaToken(filosofo, lado);
 
-                this.forks[lado] = new Fork();
-                this.tokens[lado] = null;
+                int ladoInverso = this.inverteLado(lado);
+                if (filosofo.forks[ladoInverso] != null)
+                {
+                    this.enviaToken(filosofo, lado);
+                    this.forks[lado] = new Fork();
+                    this.tokens[lado] = null;
+                } else {
+                    MessageBox.Show(this.filosofos[lado].nomeFilosofo + ", não tem garfo");
+                }
             }
         }
 
@@ -217,8 +241,10 @@ namespace FilosofosQueJantam
         // METODOS TOKEN
         private void enviaToken(Filosofo ladoFilosofo, int lado)
         {
+            //Eu
             ladoFilosofo.recebeToken(lado);
             this.tokens[lado] = null;
+
             if (Lado.Dir == lado) this.myUserControll.filosofoMaoDir = "Garfo";
             if (Lado.Esq == lado) this.myUserControll.filosofoMaoEsq = "Garfo";
         }
