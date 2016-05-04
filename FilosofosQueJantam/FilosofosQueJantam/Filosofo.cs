@@ -29,7 +29,7 @@ namespace FilosofosQueJantam
         //End atributes
 
         //CONTRUCTOR
-        public Filosofo(string nomeFilosofo, object maoDir, object maoEsq)
+        public Filosofo(string nomeFilosofo, object maoEsq, object maoDir)
         {
             //Pega os objetos
             this.pegar(maoDir, Lado.Dir);
@@ -86,7 +86,7 @@ namespace FilosofosQueJantam
             {
                 this.tokens[mao] = (Token)objeto;
             }
-            else if (objeto.GetType() == typeof(Fork))
+            if (objeto.GetType() == typeof(Fork))
             {
                 this.forks[mao] = (Fork)objeto;
             }
@@ -131,7 +131,7 @@ namespace FilosofosQueJantam
             if (!this.estouComGarfo(Lado.Dir))
             {
                 //Verifica se visinho esta comendo
-                if (!estaComendo(Lado.Dir))
+                if (!this.estaComendo(Lado.Dir))
                     this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
             }
 
@@ -139,7 +139,7 @@ namespace FilosofosQueJantam
             if (!this.estouComGarfo(Lado.Esq))
             {
                 //Verifica se visinho esta comendo
-                if (!estaComendo(Lado.Esq))
+                if (!this.estaComendo(Lado.Esq))
                     this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
             }
 

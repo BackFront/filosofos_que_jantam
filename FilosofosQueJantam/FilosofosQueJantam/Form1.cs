@@ -15,24 +15,25 @@ namespace FilosofosQueJantam
         public Form1()
         {
             InitializeComponent();
-            Filosofo filosofo1 = new Filosofo("Rafael", new Fork(), new Fork());
-            Filosofo filosofo2 = new Filosofo("Andre", new Token(), new Token());
-            Filosofo filosofo3 = new Filosofo("Gabriel", new Token(), new Fork());
-            
+            Filosofo filosofo1 = new Filosofo("Rafael", new Fork(), new Token());
+            Filosofo filosofo2 = new Filosofo("Andre", new Fork(), new Token());
+            Filosofo filosofo3 = new Filosofo("Gabriel", new Fork(), new Token());
 
 
-            //Filosofo 01
-            filosofo1.setFilosofoLado(filosofo3, Lado.Dir);
-            filosofo1.setFilosofoLado(filosofo2, Lado.Esq);
+
+			//Filosofo 01 - Rafael
+			filosofo1.setFilosofoLado(filosofo2, Lado.Esq);
+			filosofo1.setFilosofoLado(filosofo3, Lado.Dir);
 
 
-            //Filosofo 02
-            filosofo2.setFilosofoLado(filosofo1, Lado.Dir);
-            filosofo2.setFilosofoLado(filosofo3, Lado.Esq);
 
-            //Filosofo 03
-            filosofo3.setFilosofoLado(filosofo2, Lado.Dir);
-            filosofo3.setFilosofoLado(filosofo1, Lado.Esq);
+			//Filosofo 02 - Andre
+			filosofo2.setFilosofoLado(filosofo3, Lado.Esq);
+			filosofo2.setFilosofoLado(filosofo1, Lado.Dir);
+
+			//Filosofo 03 - Gabriel
+			filosofo3.setFilosofoLado(filosofo1, Lado.Esq);
+			filosofo3.setFilosofoLado(filosofo2, Lado.Dir);
 
             //Inclui os filosofos no painel
 
