@@ -29,7 +29,7 @@ namespace FilosofosQueJantam
         //End atributes
 
         //CONTRUCTOR
-        public Filosofo(string nomeFilosofo, object maoEsq, object maoDir)
+        public Filosofo(string nomeFilosofo, object maoDir, object maoEsq)
         {
             //Pega os objetos
             this.pegar(maoDir, Lado.Dir);
@@ -237,24 +237,41 @@ namespace FilosofosQueJantam
             }
         }
 
-        //=====================================================
-        // METODOS TOKEN
-        private void enviaToken(Filosofo ladoFilosofo, int lado)
+		//=====================================================
+		// METODOS TOKEN
+		private void enviaToken(Filosofo ladoFilosofo, int lado)
         {
             //Eu
-            ladoFilosofo.recebeToken(lado);
+            //ladoFilosofo.recebeToken(ladoFilosofo, lado);
             this.tokens[lado] = null;
 
-            if (Lado.Dir == lado) this.myUserControll.filosofoMaoDir = "Garfo";
-            if (Lado.Esq == lado) this.myUserControll.filosofoMaoEsq = "Garfo";
+			if (Lado.Dir == lado)
+			{
+				this.myUserControll.filosofoMaoDir = "Garfo";
+				ladoFilosofo.myUserControll.filosofoMaoEsq = "Token";
+
+				ladoFilosofo.tokens[this.inverteLado(lado)] = new Token();
+				ladoFilosofo.forks[this.inverteLado(lado)] = null;
+			}
+
+			if (Lado.Esq == lado)
+			{
+				this.myUserControll.filosofoMaoEsq = "Garfo";
+				ladoFilosofo.myUserControll.filosofoMaoDir = "Token";
+
+				ladoFilosofo.tokens[this.inverteLado(lado)] = new Token();
+				ladoFilosofo.forks[this.inverteLado(lado)] = null;
+			}
         }
 
-        private void recebeToken(int lado)
+        private void recebeToken(Filosofo ladoFilosofo, int lado)
         {
             this.tokens[lado] = new Token();
             this.forks[lado] = null;
-            if (Lado.Dir == lado) this.myUserControll.filosofoMaoDir = "Token";
-            if (Lado.Esq == lado) this.myUserControll.filosofoMaoEsq = "Token";
+            if (Lado.Dir == lado) ladoFilosofo.myUserControll.filosofoMaoDir = "Token";
+            if (Lado.Esq == lado) ladoFilosofo.myUserControll.filosofoMaoEsq = "Token";
         }
+
+
     }
 }

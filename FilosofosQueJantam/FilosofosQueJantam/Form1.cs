@@ -15,9 +15,9 @@ namespace FilosofosQueJantam
         public Form1()
         {
             InitializeComponent();
-            Filosofo filosofo1 = new Filosofo("Rafael", new Fork(), new Token());
-            Filosofo filosofo2 = new Filosofo("Andre", new Fork(), new Token());
-            Filosofo filosofo3 = new Filosofo("Gabriel", new Fork(), new Token());
+            Filosofo filosofo1 = new Filosofo("Rafael", new Fork(), new Fork());
+            Filosofo filosofo2 = new Filosofo("Andre", new Token(), new Fork());
+            Filosofo filosofo3 = new Filosofo("Gabriel", new Token(), new Token());
 
 
 
