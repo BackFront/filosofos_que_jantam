@@ -11,7 +11,7 @@ namespace FilosofosQueJantam
     {
         /*
 		 * 0 = meditando
-		 * 1 = como fome
+		 * 1 = com fome
 		 * 2 = comendo
 		 */
         public string nomeFilosofo;
@@ -152,11 +152,19 @@ namespace FilosofosQueJantam
             }
         }
 
-        public void pararComer(object sender, EventArgs e)
+		public void pararComer(object sender, EventArgs e)
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
             this.mudarEstadoMeditando();
-        }
+
+			//Se o cara da direita estiver com fome, envie o garfo
+			if (this.estaComFome(Lado.Dir)) {
+				this.enviaFork(filosofos[Lado.Dir], Lado.Dir);
+			}
+
+			//Se o cara da esquerda estiver com fome, envie o garfo
+			if (this.estaComFome(Lado.Esq)) this.enviaFork(filosofos[Lado.Esq], Lado.Esq);
+		}
 
         //===================================================
         // METODOS DE MUDANÇA DE ESTADO
@@ -176,8 +184,7 @@ namespace FilosofosQueJantam
             this.myUserControll.filosofoEstado = "Com fome";
             this.myUserControll.BotaoClicado -= comer;
             this.myUserControll.BotaoClicado -= pararComer;
-
-        }
+		}
 
         private void mudarEstadoComendo()
         {
@@ -211,15 +218,27 @@ namespace FilosofosQueJantam
             return false;
         }
 
+		/**
+		 * Verifica se o filosofo do lado (Dir/Esq) esta comendo
+		 */
         private bool estaComendo(int lado)
         {
             if (this.filosofos[lado].estado == 2) return true;
             return false;
         }
 
-        //===================================================
-        // METODOS GARFO
-        private void pedirGarfo(Filosofo filosofo, int lado)
+		/**
+		 * Verifica se o filosofo do lado (Dir/Esq) esta com fome
+		 */
+		private bool estaComFome(int lado)
+		{
+			if (this.filosofos[lado].estado == 1) return true;
+			return false;
+		}
+
+		//===================================================
+		// METODOS GARFO
+		private void pedirGarfo(Filosofo filosofo, int lado)
         {
             if (this.tokens[lado] != null)
             {
@@ -238,11 +257,10 @@ namespace FilosofosQueJantam
         }
 
 		//=====================================================
-		// METODOS TOKEN
+		// METODOS TOKEN: Envia o token para o filosofo (Dir/Esq), assim que pegar o garfo dele.
 		private void enviaToken(Filosofo ladoFilosofo, int lado)
         {
             //Eu
-            //ladoFilosofo.recebeToken(ladoFilosofo, lado);
             this.tokens[lado] = null;
 
 			if (Lado.Dir == lado)
@@ -264,14 +282,31 @@ namespace FilosofosQueJantam
 			}
         }
 
-        private void recebeToken(Filosofo ladoFilosofo, int lado)
-        {
-            this.tokens[lado] = new Token();
-            this.forks[lado] = null;
-            if (Lado.Dir == lado) ladoFilosofo.myUserControll.filosofoMaoDir = "Token";
-            if (Lado.Esq == lado) ladoFilosofo.myUserControll.filosofoMaoEsq = "Token";
-        }
+		//=====================================================
+		// METODOS FORK: Envia o garfo para o filosofo que esta com fome, assim que parar de comer.
+		private void enviaFork(Filosofo ladoFilosofo, int lado)
+		{
+			//Eu
+			this.forks[lado] = null;
 
+			if (Lado.Dir == lado)
+			{
+				this.myUserControll.filosofoMaoDir = "Token";
+				ladoFilosofo.myUserControll.filosofoMaoEsq = "Garfo";
 
-    }
+				ladoFilosofo.forks[this.inverteLado(lado)] = new Fork();
+				ladoFilosofo.tokens[this.inverteLado(lado)] = null;
+			}
+
+			if (Lado.Esq == lado)
+			{
+				this.myUserControll.filosofoMaoEsq = "Token";
+				ladoFilosofo.myUserControll.filosofoMaoDir = "Garfo";
+
+				ladoFilosofo.forks[this.inverteLado(lado)] = new Fork();
+				ladoFilosofo.tokens[this.inverteLado(lado)] = null;
+			}
+		}
+
+	}
 }
