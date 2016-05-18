@@ -154,7 +154,9 @@ namespace FilosofosQueJantam
 
         public void execComer()
         {
-            this.myUserControll.BotaoClicado += pararComer;
+
+            this.myUserControll.btnAcao = "Parar de comer";
+
             //Verifica se 'this' esta com o garfo
             if (!this.estouComGarfo(Lado.Dir))
             {
@@ -184,7 +186,11 @@ namespace FilosofosQueJantam
 
         public void pararComer(object sender, EventArgs e)
         {
-            FilosofoUC myUserControll = (FilosofoUC)sender;
+            this.myUserControll.BotaoClicado -= pararComer;
+            this.myUserControll.BotaoClicado += comer;
+
+            this.myUserControll.btnAcao = "Comer";
+
             this.mudarEstadoMeditando();
 
 			//Se o cara da direita estiver com fome, envie o garfo
@@ -207,16 +213,16 @@ namespace FilosofosQueJantam
         private void mudarEstadoMeditando()
         {
             this.estado = 0; //Meditando
-            MessageBox.Show(this.nomeFilosofo + " está meditando!");
+            //MessageBox.Show(this.nomeFilosofo + " está meditando!");
             this.myUserControll.filosofoEstado = "meditando";
-            this.myUserControll.BotaoClicado += comer;
             this.myUserControll.BotaoClicado -= pararComer;
+            this.myUserControll.BotaoClicado += comer;
         }
 
         private void mudarEstadoComFome()
         {
             this.estado = 1; //Com Fome
-            MessageBox.Show(this.nomeFilosofo + " está com fome!");
+            //MessageBox.Show(this.nomeFilosofo + " está com fome!");
             this.myUserControll.filosofoEstado = "Com fome";
             this.myUserControll.BotaoClicado -= comer;
             this.myUserControll.BotaoClicado -= pararComer;
@@ -225,7 +231,7 @@ namespace FilosofosQueJantam
         private void mudarEstadoComendo()
         {
             this.estado = 2; //Comendo
-            MessageBox.Show(this.nomeFilosofo + " está comendo!");
+            //MessageBox.Show(this.nomeFilosofo + " está comendo!");
             this.myUserControll.filosofoEstado = "Comendo";
             this.myUserControll.BotaoClicado -= comer;
             this.myUserControll.BotaoClicado += pararComer;
@@ -278,7 +284,7 @@ namespace FilosofosQueJantam
         {
             if (this.tokens[lado] != null)
             {
-                MessageBox.Show(this.filosofos[lado].nomeFilosofo + ", dá o garfo fafavo");
+                //MessageBox.Show(this.filosofos[lado].nomeFilosofo + ", dá o garfo fafavo");
 
                 int ladoInverso = this.inverteLado(lado);
                 if (filosofo.forks[ladoInverso] != null)
@@ -287,7 +293,7 @@ namespace FilosofosQueJantam
                     this.forks[lado] = new Fork();
                     this.tokens[lado] = null;
                 } else {
-                    MessageBox.Show(this.filosofos[lado].nomeFilosofo + ", não tem garfo");
+                    //MessageBox.Show(this.filosofos[lado].nomeFilosofo + ", não tem garfo");
                 }
             }
         }

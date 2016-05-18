@@ -85,6 +85,14 @@ namespace FilosofosQueJantam
             }
         }
 
+        public string btnAcao
+        {
+            set
+            {
+                acaoFilosofo.Text = value;
+            }
+        }
+
         private void acaoFilosofo_Click(object sender, EventArgs e)
         {
             if (BotaoClicado != null)

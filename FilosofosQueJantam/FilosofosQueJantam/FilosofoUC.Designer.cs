@@ -46,7 +46,7 @@
             this.acaoFilosofo.Name = "acaoFilosofo";
             this.acaoFilosofo.Size = new System.Drawing.Size(133, 23);
             this.acaoFilosofo.TabIndex = 0;
-            this.acaoFilosofo.Text = "Exec";
+            this.acaoFilosofo.Text = "Iniciar";
             this.acaoFilosofo.UseVisualStyleBackColor = true;
             this.acaoFilosofo.Click += new System.EventHandler(this.acaoFilosofo_Click);
             // 
