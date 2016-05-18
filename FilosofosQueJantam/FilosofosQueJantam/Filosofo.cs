@@ -152,7 +152,37 @@ namespace FilosofosQueJantam
             }
         }
 
-		public void pararComer(object sender, EventArgs e)
+        public void execComer()
+        {
+            this.myUserControll.BotaoClicado += pararComer;
+            //Verifica se 'this' esta com o garfo
+            if (!this.estouComGarfo(Lado.Dir))
+            {
+                //Verifica se visinho esta comendo
+                if (!this.estaComendo(Lado.Dir))
+                    this.pedirGarfo(this.filosofos[Lado.Dir], Lado.Dir);
+            }
+
+            //Verifica se 'this' esta com o garfo
+            if (!this.estouComGarfo(Lado.Esq))
+            {
+                //Verifica se visinho esta comendo
+                if (!this.estaComendo(Lado.Esq))
+                    this.pedirGarfo(this.filosofos[Lado.Esq], Lado.Esq);
+            }
+
+            if (this.estouComOsDoisGarfo())
+            {
+                this.mudarEstadoComendo();
+            }
+            else
+            {
+                this.mudarEstadoComFome();
+            }
+
+        }
+
+        public void pararComer(object sender, EventArgs e)
         {
             FilosofoUC myUserControll = (FilosofoUC)sender;
             this.mudarEstadoMeditando();
@@ -160,10 +190,16 @@ namespace FilosofosQueJantam
 			//Se o cara da direita estiver com fome, envie o garfo
 			if (this.estaComFome(Lado.Dir)) {
 				this.enviaFork(filosofos[Lado.Dir], Lado.Dir);
-			}
+                this.filosofos[Lado.Dir].execComer();
+            }
 
-			//Se o cara da esquerda estiver com fome, envie o garfo
-			if (this.estaComFome(Lado.Esq)) this.enviaFork(filosofos[Lado.Esq], Lado.Esq);
+            //Se o cara da esquerda estiver com fome, envie o garfo
+            if (this.estaComFome(Lado.Esq))
+            {
+                this.enviaFork(filosofos[Lado.Esq], Lado.Esq);
+                this.filosofos[Lado.Esq].execComer();
+            }
+
 		}
 
         //===================================================
